@@ -5,7 +5,6 @@ interfaces returns raw results. These should instead be parsed to extract
 the useful information for the end user.
 """
 # Native python imports
-from datetime import datetime
 import json
 import os
 import pathlib
@@ -55,6 +54,7 @@ _token_file = os.path.join(_cache_dir, 'tokens.json')
 
 class InnerTube:
     """Object for interacting with the innertube API."""
+
     def __init__(self, client='WEB', use_oauth=False, allow_cache=True):
         self.context = _default_clients[client]['context']
         self.api_key = _default_clients[client]['api_key']
@@ -145,7 +145,7 @@ class InnerTube:
         verification_url = response_data['verification_url']
         user_code = response_data['user_code']
         print(f'Please open {verification_url} and input code {user_code}')
-        x = input('Press enter when you have completed this step.')
+        _ = input('Press enter when you have completed this step.')
 
         data = {
             'client_id': _client_id,
